@@ -6,6 +6,11 @@ import { useState, useEffect } from "react";
 function Favorites() {
     const favoritesSelector =  useSelector((store) => store.favorites);
     console.log('things');
+
+    useEffect(() => {
+      getFavorites();
+    }, []);
+
     return (
         <h1>hi</h1>
     );

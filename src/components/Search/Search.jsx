@@ -32,7 +32,7 @@ return (
   >
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          label="Search"
           variant="outlined"
           placeholder="Search"
           onChange={(event) => setSearch(event.target.value)}
