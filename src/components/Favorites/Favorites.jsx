@@ -8,7 +8,7 @@ function Favorites() {
     console.log('things');
 
     useEffect(() => {
-      getFavorites();
+    //   getFavoritesSelector();
     }, []);
 
     return (

@@ -10,6 +10,17 @@ import { takeLatest, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 
+
+function* fetchGifs(action){
+    try {
+        const gifResponse = yield axios.get(`/api/search/${action.payload}`);
+        console.log('gif response', gifResponse);
+        yield put({ type: "SETTING_GIFS", payload: gifResponse.data });
+      } catch (error) {
+        console.log("error with getting gifs", error);
+      }
+}
+
 function* fetchFavorites(){
     try {
         const favoriteResponse= yield axios.get('api/favorites');
@@ -45,6 +56,7 @@ function* rootSaga() {
     
     // If we see an action "FETCH_ELEMENTS", run the fetchElements saga.
     yield takeLatest('FETCH_FAVORITES', fetchFavorites);
+    yield takeLatest('FETCHING_GIFS', fetchGifs);
     // If we see an action "ADD_ELEMENT", run the postElement saga.
     //yield takeLatest('ADD_ELEMENT', postElement);
 }
@@ -52,11 +64,19 @@ function* rootSaga() {
 
 const sagaMiddleware = createSagaMiddleware();
 
-
+const giphyReducer = (state = [], action) => {
+    switch (action.type) {
+      case "SETTING_GIFS":
+        return action.payload;
+      default:
+        return state;
+    }
+  };
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         favorites,
+        giphyReducer
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger)

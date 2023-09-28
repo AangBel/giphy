@@ -15,7 +15,7 @@ function Search() {
     event.preventDefault();
     // console.log("submit");
     dispatch({
-      type: "GET_GIFS",
+      type: "FETCHING_GIFS",
       payload: search,
     });  
 

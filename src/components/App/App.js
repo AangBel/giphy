@@ -3,6 +3,7 @@ import Search from '../Search/Search';
 // import Favorites from './Favorites/Favorites'
 import Favorites from '../Favorites/Favorites.jsx';
 
+
 function App(props) {
   return (
     <div>
