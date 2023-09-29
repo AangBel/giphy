@@ -14,6 +14,10 @@ export default function SearchResult() {
   const gifs = useSelector((state) => state.giphyReducer);
   //   const dispatch = useDispatch();
 
+
+  function likeButtonHandle(){
+    console.log('you liked an image!');
+}
   return (
     <Box
       component="form"
@@ -22,11 +26,11 @@ export default function SearchResult() {
       }}
     >
       {gifs.map((url) => (
-        <>
+    
           <img src={url}></img>
-          <Button >❤️</Button>
-        </>
-      ))}
+          
+          ))}
+          {/* <Button onClick={likeButtonHandle}>❤️</Button> */}
     </Box>
   );
 }
