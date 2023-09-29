@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -9,48 +9,40 @@ import Button from "@mui/material/Button";
 function Search() {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
-  const gifs = useSelector((store) => store.gifs)
-  
+  const gifs = useSelector((state) => state.giphyReducer);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log("submit");
     dispatch({
       type: "FETCHING_GIFS",
       payload: search,
-    });  
-
-}
-return (
-  <Box
-    component="form"
-    sx={{
-      "& > :not(style)": { m: 1, width: "25ch" },
-    }}
-    noValidate
-    autoComplete="off"
-  onSubmit={handleSubmit}
-  >
-        <TextField
-          id="outlined-basic"
-          label="Search"
-          variant="outlined"
-          placeholder="Search"
-          onChange={(event) => setSearch(event.target.value)}
-          value={search}
-        />
-    {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-    <Button
-        type="submit"
-        variant="contained"
-        size="large"
-        disableElevation
+    });
+  };
+  return (
+    <Box
+      component="form"
+      sx={{
+        "& > :not(style)": { m: 1, width: "25ch" },
+      }}
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
     >
-      Submit
-     </Button>
-  
+      <TextField
+        id="outlined-basic"
+        label="Search"
+        variant="outlined"
+        placeholder="Search"
+        onChange={(event) => setSearch(event.target.value)}
+        value={search}
+      />
+      {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
+      <Button type="submit" variant="contained" size="large" disableElevation>
+        Submit
+      </Button>
     </Box>
-);
+  );
 }
 
-  
 export default Search;
