@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
+import Button from "@mui/material/Box";
 
 
 
@@ -14,8 +15,11 @@ function Favorites() {
     }, []);
 
     return (
+      <>
+      {/* <Button >❤️</Button> */}
       
-        <h1>hi</h1>
+      </>
+        
     );
   }
 

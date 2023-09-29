@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Search from "./Search";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Box";
 
 export default function SearchResult() {
   const gifs = useSelector((state) => state.giphyReducer);
@@ -21,7 +22,10 @@ export default function SearchResult() {
       }}
     >
       {gifs.map((url) => (
-        <img src={url}></img>
+        <>
+          <img src={url}></img>
+          <Button >❤️</Button>
+        </>
       ))}
     </Box>
   );
