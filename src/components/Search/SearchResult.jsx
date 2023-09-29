@@ -3,7 +3,7 @@
 // Get the the search results (the list of urls) from the reducer (you already have that on line 15)
 // We want to loop over that list, and for each url, put the image on the dom
 //
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Search from "./Search";
@@ -12,33 +12,32 @@ import { Button } from "@mui/material";
 
 export default function SearchResult() {
   const gifs = useSelector((state) => state.giphyReducer);
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({ type: "SETTING_FAVORITE" });
+  }, []);
 
-  function likeButtonHandle(){
-    console.log('you liked an image!');
-}
+  function likeButtonHandle() {
+    console.log("you liked an image!");
+  }
   return (
     <Box
-    component="form"
-    sx={{
+      component="form"
+      sx={{
         "& > :not(style)": { m: 1, width: "25ch" },
-    }}
+      }}
     >
-     <>
-      {gifs.map((url) => (
-        <div>
+      <>
+        {gifs.map((url) => (
+          <div key ={url} >
             <img src={url}></img>
-            <Button 
-            onClick={likeButtonHandle}
-            variant="contained"
-            >❤️</Button>
-
-        </div>
-    
-          
-          ))}
-     </>
+            <Button onClick={likeButtonHandle} variant="contained">
+              ❤️
+            </Button>
+          </div>
+        ))}
+      </>
     </Box>
   );
 }

@@ -1,26 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
-import Button from "@mui/material/Box";
+// import Button from "@mui/material/Box";
 
 
 
 function Favorites() {
+  const favorites = useSelector((store) => store.favorites);
+  const dispatch = useDispatch();
 
-    const favoritesSelector =  useSelector((store) => store.favorites);
-    const dispatch = useDispatch();
-    console.log('things');
+  useEffect(() => {
+    
+  
+  }, []);
 
-    useEffect(() => {
-    //   getFavoritesSelector();
-    }, []);
+  return (
+    <div>
+      {favorites.map((favorite) => (
+        <img key={favorite.url} src={favorite.url} />
+      ))}
+    </div>
+  );
+}
 
-    return (
-      <>
-      {/* <Button >❤️</Button> */}
-      
-      </>
-        
-    );
-  }
+export default Favorites;  
 
-export default Favorites;
