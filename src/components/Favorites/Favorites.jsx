@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 
 
 function Favorites() {
+
     const favoritesSelector =  useSelector((store) => store.favorites);
+    const dispatch = useDispatch();
     console.log('things');
 
     useEffect(() => {
@@ -12,6 +14,7 @@ function Favorites() {
     }, []);
 
     return (
+      
         <h1>hi</h1>
     );
   }

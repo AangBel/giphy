@@ -21,8 +21,9 @@ function* fetchGifs(action) {
     if (gifData.length > 0) {
       for (const gif of gifData) {
         const gifURL = gif.images.original.url;
-        yield put({ type: "SETTING_GIF", payload: gifURL });
+        yield put({ type: "SETTING_GIFS", payload: gifURL });
       }
+
     } else {
       console.log("No GIFs found in the response");
     }
@@ -87,7 +88,8 @@ const sagaMiddleware = createSagaMiddleware();
 const giphyReducer = (state = [], action) => {
     switch (action.type) {
       case "SETTING_GIFS":
-        return action.payload;
+        return [action.payload, ...state];
+
       default:
         return state;
     }
